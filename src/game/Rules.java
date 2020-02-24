@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Rules {
 
+  private static final int nbIdemGagnant = 3;
   /**
    * Cette méthode permet de déterminer si une suite d'états de pièce permet de gagner à une partie
    * @param states liste d'états pour un joueur
@@ -13,6 +14,21 @@ public class Rules {
    */
   public boolean checkWin(List<CoinState> states) {
     // TODO: Votre code ici
+    if(!states.isEmpty()) {
+      CoinState type = states.get(states.size());
+      int nbIdem = 0;
+      for (int i = states.size() - 1; i <= 0; i--) {
+        if (nbIdem < nbIdemGagnant) {
+          if (states.get(i).equals(type)) {
+            nbIdem++;
+          } else {
+            return false;
+          }
+        } else {
+          return true;
+        }
+      }
+    }
     return false;
   }
 }

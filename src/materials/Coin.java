@@ -1,8 +1,11 @@
 package materials;
 
+import java.util.Random;
+
 public class Coin {
 
   private CoinState coinState;
+  private static final Random RANDOM = new Random();
 
   /**
    * Change l'état de la pièce.
@@ -10,6 +13,9 @@ public class Coin {
    */
   public void throwCoin() {
     // TODO : Votre code ici
+    CoinState[] lstEnum = CoinState.class.getEnumConstants();
+    int randomNumber = RANDOM.nextInt(lstEnum.length);
+    coinState = lstEnum[randomNumber];
   }
 
   public CoinState getState() {
