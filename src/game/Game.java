@@ -35,7 +35,8 @@ public class Game {
         coin = new Coin();
         rules = new Rules();
         for(Player p : history.keySet()){
-            while (rules.checkWin(history.get(p))) {
+            p.play(coin);
+            while (!rules.checkWin(history.get(p))) {
                 p.play(coin);
                 history.get(p).add(coin.getState());
             }

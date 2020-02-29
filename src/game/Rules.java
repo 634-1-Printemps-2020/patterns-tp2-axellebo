@@ -14,10 +14,10 @@ public class Rules {
    */
   public boolean checkWin(List<CoinState> states) {
     // TODO: Votre code ici
-    if(!states.isEmpty()) {
-      CoinState type = states.get(states.size());
+    if(!states.isEmpty() || states.size()>=3) {
+      CoinState type = states.get(states.size()-1);
       int nbIdem = 0;
-      for (int i = states.size() - 1; i <= 0; i--) {
+      for (int i = states.size() - 1; i >= 0; i--) {
         if (nbIdem < nbIdemGagnant) {
           if (states.get(i).equals(type)) {
             nbIdem++;
